@@ -21,10 +21,10 @@ class Json { public: class Value {}; };
 
 // Size: 64
 struct Item {
-	//void** vtable;				// 0
-	short maxStackSize;				// 4
-	std::string atlas;				// 8
-	char filler[64 - 12];			// 12
+	//void** vtable;				// 0-4
+	short maxStackSize;				// 4-8
+	std::string atlas;				// 8-12
+	char filler[64 - 12];			// 12-64
 	
 	class Tier {
 	public:
