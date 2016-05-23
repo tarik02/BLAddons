@@ -25,8 +25,7 @@ public:
 	static const Color YELLOW;
 	
 	static Color fromHSB(float, float, float);
-	static Color fromABGR(int);
-	static Color fromARGB(int);
 	
+	int toABGR() const;
 	int toARGB() const;
 };
