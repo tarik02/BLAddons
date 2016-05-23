@@ -13,10 +13,10 @@ namespace RakNet {
 class NetEventCallback;
 
 struct Packet {
-	//void** vtable;	// 0
-	int a;	// 4
-	int b;	// 8
-	bool c; // 12
+	//void** vtable;	// 0-4
+	int a;				// 4-8
+	int b;				// 8-12
+	bool c; 			// 12-13 and/or 12-16
 	
 	virtual ~Packet();
 	virtual int getId() const = 0;
@@ -32,7 +32,7 @@ public:
 
 struct DisconnectPacket : public Packet {
 public:
-	std::string message;	// 16
+	std::string message;	// 16-20
 	
 	virtual ~DisconnectPacket();
 	virtual int getId() const;
@@ -41,7 +41,7 @@ public:
 	virtual void handle(const RakNet::RakNetGUID&, NetEventCallback*) const;
 };
 
-enum TextPacketType : int {
+enum class TextPacketType : unsigned char {
 	RAW,
 	CHAT,
 	LOCALIZABLE,
@@ -51,10 +51,10 @@ enum TextPacketType : int {
 };
 
 struct TextPacket : public Packet {
-	TextPacketType type;				// 13
-	std::string source; 				// 16
-	std::string message;				// 20
-	std::vector<std::string> params;	// 24
+	TextPacketType type;				// 13-16
+	std::string source; 				// 16-20
+	std::string message;				// 20-24
+	std::vector<std::string> params;	// 24-28
 	
 	virtual ~TextPacket();
 	virtual int getId() const;
