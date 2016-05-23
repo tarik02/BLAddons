@@ -26,8 +26,12 @@ struct Item {
 	std::string atlas;				// 8-12
 	char filler[64 - 12];			// 12-64
 	
-	class Tier {
-	public:
+	struct Tier {
+		int maxDamage;		// 0-4
+		int whoknows;		// 4-8
+		int whoknows2;		// 12-16
+		int enchantValue;	// 16-20
+		
 		static Item::Tier DIAMOND;
 		static Item::Tier GOLD;
 		static Item::Tier IRON;
