@@ -26,6 +26,7 @@ struct Item {
 	std::string atlas;				// 8-12
 	char filler[64 - 12];			// 12-64
 	
+	// Size: 20
 	struct Tier {
 		int maxDamage;		// 0-4
 		int whoknows;		// 4-8
