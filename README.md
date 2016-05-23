@@ -5,3 +5,5 @@ All of these headers and examples were made by myself and/or borrowed from its o
 These headers and examples were created for using it on addons/native mods for <a href="http://www.github.com/zhuowei/MCPELauncher">BlockLauncher</a> or custom MCPE launchers.
 
 These headers were exclusively made for **MCPE v0.15.0**. Using them in other version *may* cause crashes.
+
+¨**Psst**, go to the <a href="https://github.com/jose-vm/BLAddons/wiki">Wiki</a> for extra documentation
