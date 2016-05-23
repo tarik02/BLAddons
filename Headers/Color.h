@@ -1,5 +1,6 @@
 #pragma once
 
+// Size: 16
 class Color {
 public:
 	float r;	// 0-4
@@ -26,4 +27,6 @@ public:
 	static Color fromHSB(float, float, float);
 	static Color fromABGR(int);
 	static Color fromARGB(int);
+	
+	int toARGB() const;
 };
