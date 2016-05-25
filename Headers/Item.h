@@ -71,7 +71,7 @@ struct Item {
 	virtual int getEnchantSlot() const;
 	virtual int getEnchantValue() const;
 	virtual bool isComplex() const;
-	virtual void* getColor(const ItemInstance&) const;
+	virtual Color getColor(const ItemInstance&) const;
 	virtual void* use(ItemInstance&, Player&);
 	virtual void* useOn(ItemInstance*, Player*, int, int, int, signed char, float, float, float);
 	virtual void dispense(BlockSource&, Container&, int, const Vec3&, signed char);
