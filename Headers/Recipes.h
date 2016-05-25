@@ -26,7 +26,6 @@ public:
 		Type(char character, ItemInstance iteminstance : character(character), item(NULL), block(NULL), iteminstance(iteminstance) {}
 	};
 	
-	static Recipes* getInstance();
 	void addShapedRecipe(const ItemInstance&, const std::string&, const std::string&, const std::string&, std::vector<Recipes::Type> const&);
 	void addShapedRecipe(const ItemInstance&, const std::string&, const std::string&, std::vector<Recipes::Type> const&);
 	void addShapedRecipe(const ItemInstance&, const std::string&, std::vector<Recipes::Type> const&);
@@ -34,4 +33,8 @@ public:
 	void addShapedRecipe(std::vector<ItemInstance> const&, std::vector<std::string> const&, std::vector<Recipes::Type> const&)
 	void addShapelessRecipe(const ItemInstance&, std::vector<Recipes::Type> const&);
 	void addSingleIngredientRecipeItem(const ItemInstance&, const ItemInstance&);
+	
+	static Recipes* mInstance;
+	static Recipes* getInstance();
+	static void init();
 };
