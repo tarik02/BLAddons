@@ -33,10 +33,9 @@ struct ArmorItem : public Item {
 		int getHealthForSlot(ArmorSlot) const;
 	};
 	
-	static void clearColor(ItemInstance&);
-	static Color getColor(const ItemInstance&) const;
-	static bool hasCustomColor(const ItemInstance&) const;
-	static void setColor(ItemInstance&, const Color&);
+	void clearColor(ItemInstance&);
+	bool hasCustomColor(const ItemInstance&) const;
+	void setColor(ItemInstance&, const Color&);
 	
 	static const int mHealthPerSlot[512];
 	
