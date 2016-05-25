@@ -8,7 +8,8 @@
 
 struct ItemInstance {
 	char count;			// 0-2
-	short auxValue;		// 2-8; lolwat
+	short auxValue;		// 2-4
+	bool valid;			// 4-8
 	CompoundTag* tag;	// 8-12
 	Item* item;			// 12-16
 	Block* block;		// 16-20
@@ -40,4 +41,5 @@ struct ItemInstance {
 	void _setItem(int);
 	void add(int);
 	bool canDestroySpecial(Block*);
+	bool isNull() const;
 };
