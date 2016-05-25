@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #include "Block.h"
 #include "Item.h"
 #include "NBT.h"
