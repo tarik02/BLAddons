@@ -8,7 +8,7 @@ struct Motive {
 	int height;			// 8-12
 	int uo;				// 12-16
 	int vo;				// 16-20
-	bool public;		// 20-?
+	bool sPublic;		// 20-21
 	
 	Motive(std::string, int, int, int, int, bool);
 	
