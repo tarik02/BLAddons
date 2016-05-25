@@ -3,14 +3,15 @@
 #include <string>
 #include <vector>
 
+#include "AABB.h"
 #include "Brightness.h"
+#include "Color.h"
 #include "Material.h"
 #include "TextureUVCoordinateSet.h"
 
 struct BlockSource;
 struct BlockPos;
 class Random;
-struct AABB;
 struct Entity;
 struct AABB;
 struct Container;
@@ -20,7 +21,6 @@ struct FullBlock;
 struct Mob;
 struct Player;
 struct HitResult;
-class Color;
 struct TextureAtlasTextureItem;
 
 // Size: 152
@@ -40,17 +40,17 @@ struct Block {
 	char filler3[72 - 64];		// 64-72
 	float thickness;			// 72-76
 	bool slide;					// 76-77
-	bool instatick;				// 77-80; lolwat
-	int gravity;				// 80-84; could be a float
+	bool instatick;				// 77-80
+	float gravity;				// 80-84
 	Material material;			// 84-88
-	int color;					// 88-92; a Color object, not an int
+	Color color;				// 88-92
 	char filler4[104 - 92];		// 92-104
 	float friction;				// 104-108
 	bool heavy;					// 108-112
 	float destroySpeed;			// 112-116
 	float explosionResistance;	// 116-120
 	int creativeCategory;		// 120-124
-	int shape;					// 124-128; a AABB object, not an int
+	AABB shape;					// 124-128
 	
 	class SoundType {
 	public:
