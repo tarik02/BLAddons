@@ -26,7 +26,7 @@ struct Tag {
 	virtual Tag* copy() const = 0;
 	
 	enum class Type {
-		None = 0,
+		End = 0,
 		Byte,
 		Short,
 		Int,
@@ -43,20 +43,17 @@ struct Tag {
 	Tag(const std::string&);
 };
 
+// Size: 32
 struct CompoundTag : public Tag {
 	std::map<std::string, std::unique_ptr<Tag>> data; // 8-?
 	
 	virtual ~CompoundTag();
-	virtual void deleteChildren();
 	virtual void write(IDataOutput&) const;
 	virtual void load(IDataInput&) const;
 	virtual std::string toString() const;
 	virtual char getId() const;
 	virtual bool equals(const Tag&) const;
-	virtual void print(PrintStream&) const;
 	virtual void print(const std::string&, PrintStream&) const;
-	virtual Tag* setName(const std::string&);
-	virtual std::string getName() const;
 	virtual Tag* copy() const;
 	
 	bool contains(const std::string&) const;
@@ -107,10 +104,7 @@ struct ListTag : public Tag {
 	virtual std::string toString() const;
 	virtual char getId() const;
 	virtual bool equals(const Tag&) const;
-	virtual void print(PrintStream&) const;
 	virtual void print(const std::string&, PrintStream&) const;
-	virtual Tag* setName(const std::string&);
-	virtual std::string getName() const;
 	virtual Tag* copy() const;
 	
 	void add(std::unique_ptr<Tag>);
@@ -124,10 +118,73 @@ struct ListTag : public Tag {
 	ListTag(const std::string&);
 };
 
-class ListTagFloatAdder {
-public:
-	ListTagFloatAdder& operator()(const std::string&, float);
-	ListTagFloatAdder& operator()(float);
+struct TagMemoryChunk {
+	void* data;
+	int len;
+};
+
+// Size: 12
+struct ByteArrayTag : public Tag {
+	TagMemoryChunk data; // who cares about size lol
+	
+	virtual ~ByteArrayTag();
+	virtual void write(IDataOutput&) const;
+	virtual void load(IDataInput&) const;
+	virtual std::string toString() const;
+	virtual char getId() const;
+	virtual bool equals(const Tag&) const;
+	virtual Tag* copy() const;
+	
+	ByteArrayTag(const std::string&);
+	ByteArrayTag(const std::string&, TagMemoryChunk);
+};
+
+// Size: 12
+struct IntArrayTag : public Tag {
+	TagMemoryChunk data; // 8-12
+	
+	virtual ~IntArrayTag();
+	virtual void write(IDataOutput&) const;
+	virtual void load(IDataInput&) const;
+	virtual std::string toString() const;
+	virtual char getId() const;
+	virtual bool equals(const Tag&) const;
+	virtual Tag* copy() const;
+	
+	IntArrayTag(const std::string&);
+	IntArrayTag(const std::string&, TagMemoryChunk);
+};
+
+// Size: 8
+struct StringTag : public Tag {
+	std::string data; // supposed to be 8-12
+	
+	virtual ~StringTag();
+	virtual void write(IDataOutput&) const;
+	virtual void load(IDataInput&) const;
+	virtual std::string toString() const;
+	virtual char getId() const;
+	virtual bool equals(const Tag&) const;
+	virtual Tag* copy() const;
+	
+	StringTag(const std::string&);
+	StringTag(const std::string&, const std::string&);
+};
+
+// Size: 16
+struct DoubleTag : public Tag {
+	double data; // 8-16
+	
+	virtual ~DoubleTag();
+	virtual void write(IDataOutput&) const;
+	virtual void load(IDataInput&) const;
+	virtual std::string toString() const;
+	virtual char getId() const;
+	virtual bool equals(const Tag&) const;
+	virtual Tag* copy() const;
+	
+	DoubleTag(const std::string&);
+	DoubleTag(const std::string&, double);
 };
 
 // Size: 12
@@ -135,18 +192,93 @@ struct FloatTag : public Tag {
 	float data;	// 8-12
 	
 	virtual ~FloatTag();
-	virtual void deleteChildren();
 	virtual void write(IDataOutput&) const;
 	virtual void load(IDataInput&) const;
 	virtual std::string toString() const;
 	virtual char getId() const;
 	virtual bool equals(const Tag&) const;
-	virtual void print(PrintStream&) const;
-	virtual void print(const std::string&, PrintStream&) const;
-	virtual Tag* setName(const std::string&);
-	virtual std::string getName() const;
 	virtual Tag* copy() const;
 	
 	FloatTag(const std::string&);
 	FloatTag(const std::string&, float);
+};
+
+// Size: 8
+struct ShortTag : public Tag {
+	short data;	// supposed to be 8-10
+	
+	virtual ~ShortTag();
+	virtual void write(IDataOutput&) const;
+	virtual void load(IDataInput&) const;
+	virtual std::string toString() const;
+	virtual char getId() const;
+	virtual bool equals(const Tag&) const;
+	virtual Tag* copy() const;
+	
+	ShortTag(const std::string&);
+	ShortTag(const std::string&, short);
+};
+
+// Size: 8
+struct ByteTag : public Tag {
+	unsigned char data; // supposed to be 8-9
+	
+	virtual ~ByteTag();
+	virtual void write(IDataOutput&) const;
+	virtual void load(IDataInput&) const;
+	virtual std::string toString() const;
+	virtual char getId() const;
+	virtual bool equals(const Tag&) const;
+	virtual Tag* copy() const;
+	
+	ByteTag(const std::string&);
+	ByteTag(const std::string&, unsigned char);
+};
+
+// Size: 8
+struct IntTag : public Tag {
+	int data; // supposed to be 4-8
+	
+	virtual ~IntTag();
+	virtual void write(IDataOutput&) const;
+	virtual void load(IDataInput&) const;
+	virtual std::string toString() const;
+	virtual char getId() const;
+	virtual bool equals(const Tag&) const;
+	virtual Tag* copy() const;
+	
+	IntTag(const std::string&);
+	IntTag(const std::string&, int);
+};
+
+// Size: 16
+struct Int64Tag : public Tag {
+	long long data;	// 8-16
+	
+	virtual ~Int64Tag();
+	virtual void write(IDataOutput&) const;
+	virtual void load(IDataInput&) const;
+	virtual std::string toString() const;
+	virtual char getId() const;
+	virtual bool equals(const Tag&) const;
+	virtual Tag* copy() const;
+	
+	Int64Tag(const std::string&);
+	Int64Tag(const std::string&, long long);
+};
+
+// Size: 8
+struct EndTag : public Tag {
+	virtual ~EndTag();
+	virtual void write(IDataOutput&) const;
+	virtual void load(IDataInput&) const;
+	virtual std::string toString() const;
+	virtual char getId() const;
+	virtual bool equals(const Tag&) const;
+	virtual Tag* copy() const;
+};
+
+class NbtIo {
+public:
+	static CompoundTag* read(IDataInput*);
 };
