@@ -24,7 +24,6 @@ struct ItemInstance {
 	ItemInstance();
 	ItemInstance(bool);
 	ItemInstance(int, int, int);
-	ItemInstance(const Item*, int, int, const CompoundTag*);
 	ItemInstance(const Block*);
 	ItemInstance(const Block*, int);
 	ItemInstance(const Block*, int, int);

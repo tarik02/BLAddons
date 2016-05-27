@@ -7,19 +7,6 @@ class Color;
 
 // Size: 80
 struct ArmorItem : public Item {
-	ArmorSlot slot;			// 64-68
-	char filler2[4];		// 68-72
-	ArmorMaterial material;	// 72-76
-	char filler3[4];		// 76-80
-	
-	virtual ~ArmorItem();
-	virtual bool isArmor() const;
-	virtual void* appendFormattedHovertext(const ItemInstance&, const Player&, std::string&, bool) const;
-	virtual bool isValidRepairItem(const ItemInstance&, const ItemInstance&);
-	virtual int getEnchantSlot() const;
-	virtual int getEnchantValue() const;
-	virtual Color getColor(const ItemInstance&) const;
-	virtual void dispense(BlockSource&, Container&, int, const Vec3&, signed char);
 	
 	// Size: 24
 	struct ArmorMaterial {
@@ -33,6 +20,19 @@ struct ArmorItem : public Item {
 		int getEnchantValue() const;
 		int getHealthForSlot(ArmorSlot) const;
 	};
+	
+	ArmorSlot slot;			// 64-68
+	char filler2[4];		// 68-72
+	ArmorMaterial material;	// 72-76
+	char filler3[4];		// 76-80
+	
+	virtual bool isArmor() const;
+	virtual void* appendFormattedHovertext(const ItemInstance&, const Player&, std::string&, bool) const;
+	virtual bool isValidRepairItem(const ItemInstance&, const ItemInstance&);
+	virtual int getEnchantSlot() const;
+	virtual int getEnchantValue() const;
+	virtual Color getColor(const ItemInstance&) const;
+	virtual void dispense(BlockSource&, Container&, int, const Vec3&, signed char);
 	
 	ArmorItem(const std::string&, int, const ArmorItem::ArmorMaterial&, int, ArmorSlot);
 	

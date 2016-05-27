@@ -3,13 +3,14 @@
 #include <string>
 #include <memory>
 
+#include "Block.h"
+#include "Color.h"
 #include "FoodItemComponent.h"
 #include "SeedItemComponent.h"
 
 struct TextureUVCoordinateSet;
 enum CreativeItemCategory {};
 enum UseAnimation {};
-struct Block;
 struct ItemInstance;
 struct Player;
 struct BlockSource;
@@ -70,7 +71,7 @@ struct Item {
 	virtual bool isFoil(const ItemInstance*) const;
 	virtual bool isThrowable() const;
 	virtual bool canDestroyInCreative() const;
-	virtual bool isLiquidClipItem() const;
+	virtual bool isLiquidClipItem(int) const;
 	virtual bool requiresInteract() const;
 	virtual void* appendFormattedHovertext(const ItemInstance&, const Player&, std::string&, bool) const;
 	virtual bool isValidRepairItem(const ItemInstance&, const ItemInstance&);

@@ -1,10 +1,6 @@
 #pragma once
 
-#include <string>
-
 #include "TextureGroup.h"
-
-enum TextureLocation {};
 
 namespace mce {
 	struct Texture;
@@ -30,6 +26,7 @@ namespace mce {
 		void onGroupReloaded();
 		
 		// TODO: operators, high-priority
+		TextureGroup& operator=(mce::TexturePtr&&);
 		
 		static const mce::TexturePtr NONE;
 	};

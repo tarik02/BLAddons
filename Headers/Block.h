@@ -188,6 +188,7 @@ struct Block {
 	Block(const std::string&, int, TextureUVCoordinateSet, const Material&);
 	
 	void setSolid(bool);
+	bool isType(const Block*) const;
 	
 	static Block* mBlocks[256];
 	static bool mShouldTick[256];
@@ -195,6 +196,7 @@ struct Block {
 	static uint_fast8_t mLightBlock[256];
 	static float mTranslucency[256];
 	static int mLightEmission[256];
+	static Block* lookupByName(const std::string&, bool);
 	
 	static void initBlocks();
 	static TextureUVCoordinateSet getTextureUVCoordinateSet(const std::string&, int);

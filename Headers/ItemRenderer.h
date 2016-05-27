@@ -4,10 +4,12 @@ namespace mce {
 	class TextureGroup;
 	struct TexturePtr;
 }
+struct ItemInstance;
 
 struct ItemRenderer {
 	void createSingleton(mce::TextureGroup&);
+	static const mce::TexturePtr& getGraphics(ItemInstance const&);
 	
-	static mce::TexturePtr mItemGraphics[512];
+	static void* mItemGraphics[512];
 	static ItemRenderer instance;
 };

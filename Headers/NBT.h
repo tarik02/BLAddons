@@ -1,5 +1,6 @@
 #pragma once
 
+#include <map>
 #include <memory>
 #include <string>
 
@@ -42,6 +43,9 @@ struct Tag {
 	
 	Tag(const std::string&);
 };
+
+struct ListTag;
+struct TagMemoryChunk;
 
 // Size: 32
 struct CompoundTag : public Tag {
