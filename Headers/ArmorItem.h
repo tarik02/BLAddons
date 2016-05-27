@@ -5,8 +5,10 @@
 enum ArmorSlot {};
 class Color;
 
+// Size: 80
 struct ArmorItem : public Item {
-	ArmorSlot slot;		// 64-68
+	ArmorSlot slot;			// 64-68
+	char filler1[80 - 68];	// 68-80
 	
 	virtual ~ArmorItem();
 	virtual bool isArmor() const;
@@ -20,10 +22,7 @@ struct ArmorItem : public Item {
 	// Size: 24
 	struct ArmorMaterial {
 		int durabilityMultiplier;	// 0-4
-		int helmetProtection;		// 4-8
-		int chestProtection;		// 8-12
-		int pantsProtection;		// 12-16
-		int bootsProtection;		// 16-20
+		int slotProtection[4];		// 4-20
 		int enchantValue;			// 20-24
 		
 		ArmorMaterial(int, int, int, int, int, int);
@@ -32,6 +31,8 @@ struct ArmorItem : public Item {
 		int getEnchantValue() const;
 		int getHealthForSlot(ArmorSlot) const;
 	};
+	
+	ArmorItem(const std::string&, int, const ArmorItem::ArmorMaterial&, int, ArmorSlot);
 	
 	void clearColor(ItemInstance&);
 	bool hasCustomColor(const ItemInstance&) const;
