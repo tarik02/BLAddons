@@ -5,8 +5,14 @@
 #include "Vec3.h"
 
 struct Entity {
+	char filler1[260];
+	int rendererId;	// 260-264
+	char filler2[355 - 264];
+	bool immobile;
+	
 	const Vec3& getPos() const;
 	Vec2 getRotation() const;
 	void setRot(const Vec2&);
 	BlockSource& getRegion() const;
+	long long getUniqueID() const;
 };
