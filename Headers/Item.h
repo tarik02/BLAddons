@@ -1,6 +1,10 @@
 #pragma once
 
 #include <string>
+#include <memory>
+
+#include "FoodItemComponent.h"
+#include "SeedItemComponent.h"
 
 struct TextureUVCoordinateSet;
 enum CreativeItemCategory {};
@@ -21,10 +25,12 @@ class Json { public: class Value {}; };
 
 // Size: 64
 struct Item {
-	//void** vtable;				// 0-4
-	short maxStackSize;				// 4-8
-	std::string atlas;				// 8-12
-	char filler[64 - 12];			// 12-64
+	//void** vtable;							// 0-4
+	short maxStackSize;							// 4-8
+	std::string atlas;							// 8-12
+	char filler1[56 - 12];						// 12-56
+	std::unique_ptr<FoodItemComponent> food;	// 56-60
+	std::unique_ptr<SeedItemComponent> seed;	// 60-64
 	
 	// Size: 20
 	struct Tier {
