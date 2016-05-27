@@ -8,7 +8,9 @@ class Color;
 // Size: 80
 struct ArmorItem : public Item {
 	ArmorSlot slot;			// 64-68
-	char filler1[80 - 68];	// 68-80
+	char filler2[4];		// 68-72
+	ArmorMaterial material;	// 72-76
+	char filler3[4];		// 76-80
 	
 	virtual ~ArmorItem();
 	virtual bool isArmor() const;
