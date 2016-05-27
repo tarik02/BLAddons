@@ -6,6 +6,7 @@
 #include "Item.h"
 #include "NBT.h"
 
+// Size: 20
 struct ItemInstance {
 	char count;			// 0-2
 	short auxValue;		// 2-4
@@ -42,4 +43,8 @@ struct ItemInstance {
 	void add(int);
 	bool canDestroySpecial(Block*);
 	bool isNull() const;
+	int getBaseRepairCost() const;
+	std::string getCustomName() const;
+	void init(int, int, int);
+	bool isEnchanted() const;
 };
