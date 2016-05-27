@@ -8,8 +8,8 @@ struct ItemInstance;
 
 struct ItemRenderer {
 	void createSingleton(mce::TextureGroup&);
-	static const mce::TexturePtr& getGraphics(ItemInstance const&);
 	
-	static void* mItemGraphics[512];
-	static ItemRenderer instance;
+	static const mce::TexturePtr& getGraphics(const ItemInstance&);
+	
+	static ItemRenderer& instance;
 };
