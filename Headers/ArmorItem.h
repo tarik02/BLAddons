@@ -22,9 +22,9 @@ struct ArmorItem : public Item {
 	};
 	
 	ArmorSlot slot;			// 64-68
-	char filler2[4];		// 68-72
+	char filler3[4];		// 68-72
 	ArmorMaterial material;	// 72-76
-	char filler3[4];		// 76-80
+	char filler4[4];		// 76-80
 	
 	virtual bool isArmor() const;
 	virtual void* appendFormattedHovertext(const ItemInstance&, const Player&, std::string&, bool) const;

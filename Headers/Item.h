@@ -29,7 +29,9 @@ struct Item {
 	//void** vtable;							// 0-4
 	short maxStackSize;							// 4-8
 	std::string atlas;							// 8-12
-	char filler1[56 - 12];						// 12-56
+	char filler1[18 - 12];						// 12-18
+	short id;									// 18-20
+	char filler2[56 - 20];						// 20-56
 	std::unique_ptr<FoodItemComponent> food;	// 56-60
 	std::unique_ptr<SeedItemComponent> seed;	// 60-64
 	
