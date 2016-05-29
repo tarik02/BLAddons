@@ -9,6 +9,6 @@ namespace mce {
 	
 	class TextureGroup {
 	public:
-		void* getTexture(const std::string&, TextureLocation);
+		mce::TexturePtr& getTexture(const std::string&, TextureLocation);
 	};
 }

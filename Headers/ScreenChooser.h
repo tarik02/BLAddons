@@ -12,11 +12,12 @@ enum CraftingType : int { INVENTORY, WORKBENCH };
 enum WorldType {};
 class SignBlockEntity;
 
+// Size: 16
 struct ScreenChooser {
-	MinecraftClient& client;		// 0
-	MinecraftUISoundPlayer& player;	// 4
-	UIScreenType screenType;		// 8
-	bool canInvite;					// 12
+	MinecraftClient& client;		// 0-4
+	MinecraftUISoundPlayer& player;	// 4-8
+	UIScreenType screenType;		// 8-12
+	bool canInvite;					// 12-16
 	
 	UIScreenType getScreenType() const;
 	void pushAddExternalServerScreen();

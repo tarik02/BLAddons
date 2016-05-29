@@ -5,9 +5,11 @@
 // Size: 136
 class BowItem : public Item {
 public:
-	TextureUVCoordinateSet frame[3];	// 64-136; each member is 24 long
+	TextureUVCoordinateSet bow_pulling_0;	// 64-88; R7
+	TextureUVCoordinateSet bow_pulling_1;	// 88-112; R6
+	TextureUVCoordinateSet bow_pulling_2;	// 112-136; R8
 	
-	virtual ~BowItem();
+	//virtual ~BowItem();
 	virtual int getEnchantSlot() const;
 	virtual int getEnchantValue() const;
 	virtual void* use(ItemInstance&, Player&);

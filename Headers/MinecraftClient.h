@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Minecraft.h"
+#include "TextureGroup.h"
 
 struct ScreenChooser;
 class ParticleEngine;
@@ -13,4 +14,7 @@ public:
 	ScreenChooser* getScreenChooser() const;
 	Player* getLocalPlayer();
 	ParticleEngine* getParticleEngine() const;
+	mce::TextureGroup* getTextures() const;
+	
+	void init();
 };

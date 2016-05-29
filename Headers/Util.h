@@ -22,7 +22,7 @@ public:
 	static void getFileName(const std::string&);
 	static void getPoint(float, float, float);
 	static void hashCode(const std::string&);
-	static void isValidPath(const std::string&);
+	static bool isValidPath(const std::string&);
 	static void removeAll(std::string&, const** char, int);
 	static void removeIllegalChars(const std::string&);
 	static void simpleFormat(const std::string&, std::vector<std::string>);

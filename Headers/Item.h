@@ -38,16 +38,16 @@ struct Item {
 	
 	// Size: 20
 	struct Tier {
-		int maxDamage;		// 0-4
-		int whoknows;		// 4-8
-		int whoknows2;		// 12-16
+		int damageFactor;	// 0-4
+		int maxDamage;		// 4-8
+		float whoKnows;		// 12-16
 		int enchantValue;	// 16-20
 		
-		static Item::Tier DIAMOND;
-		static Item::Tier GOLD;
-		static Item::Tier IRON;
-		static Item::Tier STONE;
-		static Item::Tier WOOD;
+		static const Item::Tier DIAMOND;
+		static const Item::Tier GOLD;
+		static const Item::Tier IRON;
+		static const Item::Tier STONE;
+		static const Item::Tier WOOD;
 		
 		ItemInstance getTierItem() const;
 	};
