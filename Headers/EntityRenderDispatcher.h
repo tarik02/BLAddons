@@ -1,11 +1,13 @@
 #pragma once
 
+#include "ItemSpriteRenderer.h"
+
 struct Entity;
 enum EntityRendererId;
 
 struct EntityRenderDispatcher {
-	void* getRenderer(Entity&);
-	void* getRenderer(EntityRendererId);
+	EntityRenderer* getRenderer(Entity&);
+	EntityRenderer* getRenderer(EntityRendererId);
 	
 	static EntityRenderDispatcher* getInstance();
 }; 
