@@ -25,33 +25,6 @@ struct TextureAtlasTextureItem;
 
 // Size: 152
 struct Block {
-	//void** vtable;			// 0-4
-	unsigned char blockId;		// 4-8
-	int facesIsotropic;			// 8-12
-	std::string desc;			// 12-16
-	TextureUVCoordinateSet tex;	// 16-20
-	char filler1[40 - 20];		// 20-40
-	int soundType;				// 40-44; a SoundType object
-	int filler2;				// 44-48
-	int renderLayer;			// 48-52
-	int blockShape;				// 52-56
-	int properties;				// 56-60
-	int blockEntityType;		// 60-64
-	char filler3[72 - 64];		// 64-72
-	float thickness;			// 72-76
-	bool slide;					// 76-77
-	bool instatick;				// 77-80
-	float gravity;				// 80-84
-	Material material;			// 84-88
-	Color color;				// 88-92
-	char filler4[104 - 92];		// 92-104
-	float friction;				// 104-108
-	bool heavy;					// 108-112
-	float destroySpeed;			// 112-116
-	float explosionResistance;	// 116-120
-	int creativeCategory;		// 120-124
-	AABB shape;					// 124-128
-	
 	class SoundType {
 	public:
 		float volume;			// 0
@@ -72,6 +45,33 @@ struct Block {
 		std::string getStepSound() const;
 		float getVolume() const;
 	};
+	
+	//void** vtable;			// 0-4
+	unsigned char blockId;		// 4-8
+	int facesIsotropic;			// 8-12
+	std::string desc;			// 12-16
+	TextureUVCoordinateSet tex;	// 16-20
+	char filler1[40 - 20];		// 20-40
+	Block::SoundType sound;		// 40-44
+	int filler2;				// 44-48
+	int renderLayer;			// 48-52
+	int blockShape;				// 52-56
+	int properties;				// 56-60
+	int blockEntityType;		// 60-64
+	char filler3[72 - 64];		// 64-72
+	float thickness;			// 72-76
+	bool slide;					// 76-77
+	bool instatick;				// 77-80
+	float gravity;				// 80-84
+	Material material;			// 84-88
+	Color color;				// 88-92
+	char filler4[104 - 92];		// 92-104
+	float friction;				// 104-108
+	bool heavy;					// 108-112
+	float destroySpeed;			// 112-116
+	float explosionResistance;	// 116-120
+	int creativeCategory;		// 120-124
+	AABB shape;					// 124-128
 	
 	static const Block::SoundType SOUND_WOOD;
 	
