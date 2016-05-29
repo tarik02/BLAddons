@@ -31,7 +31,8 @@ struct Item {
 	std::string atlas;							// 8-12
 	char filler1[18 - 12];						// 12-18
 	short id;									// 18-20
-	char filler2[56 - 20];						// 20-56
+	std::string name;							// 20-24
+	char filler2[56 - 24];						// 24-56
 	std::unique_ptr<FoodItemComponent> food;	// 56-60
 	std::unique_ptr<SeedItemComponent> seed;	// 60-64
 	
