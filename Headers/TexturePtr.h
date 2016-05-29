@@ -3,11 +3,11 @@
 #include "TextureGroup.h"
 
 namespace mce {
-	struct Texture;
+	struct Texture {};
 	
 	struct TexturePtr {
-		mce::TextureGroup group;	// 0-4
-		int idk;					// 4-8; not sure if a TextureData pointer or a mce::Texture pointer
+		mce::TextureGroup& group;	// 0-4
+		mce::Texture* texture;		// 4-8
 		std::string name;			// 12-16
 		
 		TexturePtr();
