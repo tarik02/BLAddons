@@ -5,9 +5,12 @@
 // Size: 136
 class BowItem : public Item {
 public:
-	TextureUVCoordinateSet bow_pulling_0;	// 64-88; R7
-	TextureUVCoordinateSet bow_pulling_1;	// 88-112; R6
-	TextureUVCoordinateSet bow_pulling_2;	// 112-136; R8
+	TextureUVCoordinateSet bow_pulling_0;	// 64-68; R7
+	char obladi[20];			// 68-88
+	TextureUVCoordinateSet bow_pulling_1;	// 88-92; R6
+	char oblada[20];			// 92-112
+	TextureUVCoordinateSet bow_pulling_2;	// 112-116; R8
+	char lifegoeson[20];			// 116-136
 	
 	//virtual ~BowItem();
 	virtual int getEnchantSlot() const;
