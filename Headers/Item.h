@@ -71,7 +71,7 @@ struct Item {
 	virtual bool isHandEquipped() const;
 	virtual bool isArmor() const;
 	virtual bool isDye() const;
-	virtual bool isFoil(const ItemInstance*) const;
+	virtual bool isGlint(const ItemInstance*) const;
 	virtual bool isThrowable() const;
 	virtual bool canDestroyInCreative() const;
 	virtual bool isLiquidClipItem(int) const;
@@ -109,6 +109,7 @@ struct Item {
 	void init(Json::Value&);
 	
 	static Item* mItems[512];
+	static std::vector<ItemInstance> mCreativeList;
 	static Item* lookupByName(const std::string&, bool);
 	static void addBlockItems();
 	static void addCreativeItem(Block*, short);

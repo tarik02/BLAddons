@@ -66,13 +66,13 @@ struct CompoundTag : public Tag {
 	void getAllTags(std::vector<Tag*>&) const;
 	bool getBoolean(const std::string&) const;
 	char getByte(const std::string&) const;
-	void* getByteArray(const std::string&) const; // return type is void* until appropiate ByteArray class definition
+	TagMemoryChunk getByteArray(const std::string&) const;
 	CompoundTag getCompound(const std::string&) const; // probably a std::unique_ptr<CompoundTag>; #FuckMojang
 	double getDouble(const std::string&) const;
 	float getFloat(const std::string&) const;
 	int getInt(const std::string&) const;
 	long long getInt64(const std::string&) const;
-	void* getIntArray(const std::string&) const; // return type is void* until appropiate ByteArray class definition
+	TagMemoryChunk getIntArray(const std::string&) const;
 	ListTag getList(const std::string&) const; // probably a std::unique_ptr<ListTag>; #FuckMojang
 	short getShort(const std::string&) const;
 	std::string getString(const std::string&) const;
